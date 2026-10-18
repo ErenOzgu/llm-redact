@@ -18,7 +18,7 @@ env:
 jobs:
   go:
     name: Go ${{ matrix.go }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -38,7 +38,7 @@ jobs:
 
   fuzz:
     name: Fuzzing (60 s)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
@@ -52,7 +52,7 @@ jobs:
   # llm-redact, and restoring has to give the original files back. See hack/leakcheck.sh.
   leakcheck:
     name: Independent leak check (gitleaks)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
@@ -72,7 +72,7 @@ jobs:
 
   shell:
     name: shellcheck
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - run: shellcheck -x hack/leakcheck.sh
